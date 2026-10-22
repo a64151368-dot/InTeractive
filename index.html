@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#E5F7F4">
+<title>Інтерактиви</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Raleway:wght@400;500;600;700&family=Marck+Script&display=swap&subset=cyrillic" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--cream:#E9F8F5;--teal:#B9E5DE;--teal-mid:#72BDB4;--teal-deep:#347F78;--text:#304D49;--text-mid:#55716C;--brown:#814631;--brown-light:#A75B43}
+html{min-height:100%;background:var(--cream)}
+body{font-family:'Raleway',sans-serif;min-height:100vh;color:var(--text);background:radial-gradient(ellipse 65% 55% at 8% 18%,rgba(166,225,215,.52),transparent 68%),radial-gradient(ellipse 55% 65% at 92% 82%,rgba(192,235,226,.62),transparent 65%),linear-gradient(135deg,#F0FBF9,#DFF3EF);position:relative;overflow-x:hidden}
+.page{position:relative;z-index:2;max-width:850px;margin:0 auto;padding:30px 18px 42px}
+.header{text-align:center;margin-bottom:20px}
+.brand-icon{width:62px;height:58px;display:block;margin:0 auto 7px;filter:drop-shadow(0 4px 8px rgba(52,127,120,.18))}
+.header h1{font-family:'Marck Script',cursive;font-weight:400;font-size:clamp(2.8rem,7vw,4.1rem);line-height:1.12;margin-bottom:10px;color:var(--brown);text-shadow:0 1px 0 rgba(255,255,255,.7),0 3px 9px rgba(129,70,49,.15)}
+.header-desc{max-width:680px;margin:0 auto 20px;font-size:1.06rem;line-height:1.75;color:var(--text-mid);font-weight:500}
+.section-intro{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.65rem;color:var(--brown);margin:0 auto 10px;line-height:1.3}
+.divider{display:flex;align-items:center;gap:12px;margin-bottom:13px}.divider:before,.divider:after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(129,70,49,.35),transparent)}.divider-dot{width:7px;height:7px;border-radius:50%;background:#B77A60;box-shadow:0 0 8px rgba(129,70,49,.22)}
+.links-list{display:flex;flex-direction:column;background:rgba(255,255,255,.34);border:1px solid rgba(129,70,49,.14);border-radius:20px;padding:6px 18px;box-shadow:0 12px 35px rgba(52,127,120,.08);backdrop-filter:blur(7px)}
+.link-card{display:flex;align-items:center;gap:12px;padding:16px 7px;text-decoration:none;color:inherit;border-bottom:1px solid rgba(129,70,49,.17);transition:padding-left .22s ease,background .22s ease;border-radius:8px}.link-card:last-child{border-bottom:none}.link-card:hover{padding-left:14px;background:rgba(255,255,255,.38)}.link-body{flex:1;min-width:0}
+.link-name{font-family:'Marck Script',cursive;font-size:clamp(1.65rem,4vw,2.05rem);line-height:1.28;color:var(--brown);display:block;margin-bottom:4px;transition:color .2s}.link-card:hover .link-name{color:var(--brown-light)}
+.link-tag{font-size:.94rem;font-weight:500;line-height:1.55;color:var(--text-mid);display:block}.link-arrow{font-size:1.45rem;color:var(--teal-deep);flex-shrink:0;transition:transform .2s,color .2s}.link-card:hover .link-arrow{transform:translateX(5px);color:var(--brown-light)}
+/* Повітряні кулі та повітряні змії по боках */
+.sky-decor{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.balloon{position:absolute;bottom:-230px;width:clamp(76px,8vw,126px);height:auto;opacity:0;animation:balloon-rise var(--duration,25s) linear var(--delay,0s) infinite;will-change:transform,opacity;filter:drop-shadow(0 8px 9px rgba(65,111,105,.12))}
+.kite{position:absolute;width:clamp(62px,7vw,105px);height:auto;opacity:.7;animation:kite-drift var(--duration,17s) ease-in-out var(--delay,0s) infinite;filter:drop-shadow(0 5px 6px rgba(65,111,105,.12));will-change:transform}
+@keyframes balloon-rise{0%{transform:translate3d(0,0,0) rotate(-5deg);opacity:0}8%{opacity:.76}35%{transform:translate3d(var(--drift,16px),-38vh,0) rotate(4deg);opacity:.72}68%{transform:translate3d(calc(var(--drift,16px)*-.7),-76vh,0) rotate(-4deg);opacity:.68}92%{opacity:.52}100%{transform:translate3d(var(--drift,16px),-125vh,0) rotate(5deg);opacity:0}}
+@keyframes kite-drift{0%,100%{transform:translate3d(0,0,0) rotate(-8deg)}50%{transform:translate3d(var(--drift,22px),-18px,0) rotate(9deg)}}
+footer{text-align:center;margin-top:28px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.08rem;color:#78938D}
+@media(max-width:560px){.page{padding:22px 12px 34px}.header-desc{font-size:1rem;line-height:1.65}.links-list{padding:4px 12px}.link-card{padding:14px 3px}.link-tag{font-size:.88rem}.balloon{width:65px}.kite{width:52px}.kite.hide-mobile{display:none}}
+@media(prefers-reduced-motion:reduce){.balloon,.kite{animation:none;display:none}.link-card,.link-arrow,.link-name{transition:none}}
+</style></head>
+<body>
+<div class="sky-decor" aria-hidden="true">
+<!-- Balloon SVGs -->
+<svg class="balloon" style="left:1%;--duration:28s;--delay:-11s;--drift:24px" viewBox="0 0 120 190"><defs><linearGradient id="b1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F6C7A8"/><stop offset="1" stop-color="#D98970"/></linearGradient></defs><path d="M60 8C28 8 10 34 17 66c5 25 25 44 43 57 18-13 38-32 43-57C110 34 92 8 60 8Z" fill="url(#b1)" stroke="#A85E49" stroke-width="1.5"/><path d="M60 10C45 32 43 73 60 123M60 10C76 34 80 73 60 123" fill="none" stroke="#FFF5ED" stroke-width="2" opacity=".65"/><path d="M54 123h12l-4 8h-4Z" fill="#A85E49"/><path d="M60 131q-8 15 3 26t-2 24" fill="none" stroke="#A85E49" stroke-width="1.2"/></svg>
+<svg class="balloon" style="left:11%;--duration:32s;--delay:-21s;--drift:-20px;width:76px" viewBox="0 0 120 190"><path d="M60 8C28 8 10 34 17 66c5 25 25 44 43 57 18-13 38-32 43-57C110 34 92 8 60 8Z" fill="#A8DCD4" stroke="#4B9A91" stroke-width="1.5"/><path d="M60 10C45 32 43 73 60 123M60 10C76 34 80 73 60 123" fill="none" stroke="#F5FFFD" stroke-width="2" opacity=".75"/><path d="M54 123h12l-4 8h-4Z" fill="#4B9A91"/><path d="M60 131q-8 15 3 26t-2 24" fill="none" stroke="#4B9A91" stroke-width="1.2"/></svg>
+<svg class="balloon" style="right:2%;--duration:30s;--delay:-4s;--drift:-22px" viewBox="0 0 120 190"><path d="M60 8C28 8 10 34 17 66c5 25 25 44 43 57 18-13 38-32 43-57C110 34 92 8 60 8Z" fill="#C8B8E8" stroke="#8A70B2" stroke-width="1.5"/><path d="M60 10C45 32 43 73 60 123M60 10C76 34 80 73 60 123" fill="none" stroke="#FFF8FF" stroke-width="2" opacity=".75"/><path d="M54 123h12l-4 8h-4Z" fill="#8A70B2"/><path d="M60 131q-8 15 3 26t-2 24" fill="none" stroke="#8A70B2" stroke-width="1.2"/></svg>
+<svg class="balloon" style="right:12%;--duration:34s;--delay:-18s;--drift:18px;width:72px" viewBox="0 0 120 190"><path d="M60 8C28 8 10 34 17 66c5 25 25 44 43 57 18-13 38-32 43-57C110 34 92 8 60 8Z" fill="#F1D68F" stroke="#B8954E" stroke-width="1.5"/><path d="M60 10C45 32 43 73 60 123M60 10C76 34 80 73 60 123" fill="none" stroke="#FFFCED" stroke-width="2" opacity=".8"/><path d="M54 123h12l-4 8h-4Z" fill="#B8954E"/><path d="M60 131q-8 15 3 26t-2 24" fill="none" stroke="#B8954E" stroke-width="1.2"/></svg>
+<!-- Kites -->
+<svg class="kite" style="left:3%;top:20%;--duration:19s;--delay:-7s;--drift:20px" viewBox="0 0 120 160"><path d="M60 8 105 55 60 105 15 55Z" fill="#70BDB4" stroke="#397F78" stroke-width="2"/><path d="M60 8 60 105M15 55h90" stroke="#E9FFFA" stroke-width="2"/><path d="M60 105q-20 15 0 27t0 25" fill="none" stroke="#A75B43" stroke-width="1.5"/><path d="M49 120l11 6-9 5ZM61 139l10 6-8 5Z" fill="#E9A78B"/></svg>
+<svg class="kite hide-mobile" style="right:3%;top:34%;--duration:22s;--delay:-13s;--drift:-24px" viewBox="0 0 120 160"><path d="M60 8 105 55 60 105 15 55Z" fill="#E7A58C" stroke="#A75B43" stroke-width="2"/><path d="M60 8 60 105M15 55h90" stroke="#FFF4ED" stroke-width="2"/><path d="M60 105q20 15 0 27t0 25" fill="none" stroke="#397F78" stroke-width="1.5"/><path d="M49 120l11 6-9 5ZM61 139l10 6-8 5Z" fill="#8CCFC5"/></svg>
+<svg class="kite" style="right:6%;top:8%;--duration:24s;--delay:-3s;--drift:18px;width:70px" viewBox="0 0 120 160"><path d="M60 8 105 55 60 105 15 55Z" fill="#E8D49B" stroke="#B8954E" stroke-width="2"/><path d="M60 8 60 105M15 55h90" stroke="#FFFCED" stroke-width="2"/><path d="M60 105q-20 15 0 27t0 25" fill="none" stroke="#397F78" stroke-width="1.5"/><path d="M49 120l11 6-9 5ZM61 139l10 6-8 5Z" fill="#B6E3DC"/></svg>
+</div>
+<main class="page">
+<header class="header">
+<svg class="brand-icon" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M60 9C39 9 26 27 31 48c4 17 18 30 29 38 11-8 25-21 29-38C94 27 81 9 60 9Z" fill="#A9DDD5" stroke="#478E86" stroke-width="2"/><path d="M60 12V86M60 86l-5 6h10l-5-6" stroke="#478E86" stroke-width="2"/><path d="M42 24Q60 43 78 24" stroke="#F8FFFD" stroke-width="2" opacity=".8"/></svg>
+<h1>Інтерактиви</h1>
+<p class="header-desc">Інтерактивні навчальні ресурси, які допомагають досліджувати складні явища, візуалізувати поняття та закріплювати знання через активну взаємодію. Оберіть матеріал, щоб розпочати роботу.</p>
+<div class="divider"><span class="divider-dot"></span></div>
+</header>
+<p class="section-intro">Навчальні інтерактиви</p>
+<nav class="links-list" aria-label="Навчальні інтерактиви">
+<a class="link-card" href="https://www.thinglink.com/scene/2064754369428980580" target="_blank" rel="noopener noreferrer"><span class="link-body"><span class="link-tag">9 клас · Фізика</span><span class="link-name">Будова атома та атомного ядра</span><span class="link-tag">Інтерактивна візуалізація для дослідження будови атома.</span></span><span class="link-arrow" aria-hidden="true">→</span></a>
+<a class="link-card" href="https://canva.link/7ou4dfrhzh73vfv" target="_blank" rel="noopener noreferrer"><span class="link-body"><span class="link-tag">6 клас · Математика</span><span class="link-name">Звичайні дроби</span><span class="link-tag">Інтерактивний матеріал для повторення та опрацювання звичайних дробів.</span></span><span class="link-arrow" aria-hidden="true">→</span></a>
+</nav>
+<footer>© Алла Сіянко · Вищетарасівський ліцей · Інтерактиви</footer>
+</main>
+</body></html>
